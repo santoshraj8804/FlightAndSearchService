@@ -39,6 +39,18 @@ class CityRepository{
              throw {error};
         }
     } 
+
+    async getAllCities() {
+         try {
+             const cities = await City.findAll({
+                attributes: ['id', 'name', 'createdAt', 'updatedAt'] // ✅ Only real DB fields
+            });
+             return cities;
+        } catch (error) {
+             console.log("Something went wrong in the repository layer"); 
+             throw {error};
+        }
+    }
     
 }
 
